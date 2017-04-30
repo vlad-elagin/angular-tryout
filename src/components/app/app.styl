@@ -1,0 +1,132 @@
+$main-bg = #FAFAFA
+$scrollbar-thumb = #C0C0C0
+$scrollbar-track = #EBEBEB
+$input-color = #CCCCCC
+$add-button = #33cccc
+$remove-button = #ff3366
+
+// mixins
+space-between()
+  display flex
+  flex-flow row nowrap
+  justify-content space-between
+  align-items center
+
+// components
+button
+	height 35px
+	border 1px solid transparent
+	line-height 32px
+	text-align center
+	color white
+	font-size 16px
+	border-radius 5px
+	cursor pointer
+	
+
+input
+textarea
+	border 1px solid $input-color
+	border-radius 5px
+	font-size 16px
+	&::-webkit-input-placeholder
+	  color $input-color
+	&::-moz-placeholder
+	  color $input-color
+
+
+main
+  width 100%
+  height 100%
+  overflow auto
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+  align-items flex-start
+  padding 30px
+  background-color $main-bg
+  
+  &::-webkit-scrollbar
+  	background-color $scrollbar-track
+  	width 10px
+  
+  &::-webkit-scrollbar-thumb
+  	background-color $scrollbar-thumb
+  	
+.box
+  //border 1px solid gray
+  box-shadow 0 0 4px rgba(0,0,0,0.5)
+  padding 10px 10px 10px 25px
+  background-color white
+  &:first-of-type
+  	width 51%
+  	// temp
+  	height 520px
+  &:last-of-type
+  	width 47%
+  	// temp too
+  	height 615px
+  	
+  &__title
+  	font-weight 300
+  	font-size 36px
+  	
+// items bar
+.items
+	
+  &__new
+  	padding 0 5px
+  	space-between()
+  	margin-top 16px
+  	
+  	&__name
+  		width calc(100% - 140px)
+  		height 37px
+  		padding-left 10px
+  		letter-spacing 0.2px
+  		transition border-color .2s ease
+  		&:focus
+  			outline none
+  			border-color $add-button
+  	
+  	&__submit
+  		width 130px
+  		background-color $add-button
+  		
+  &__list
+  	position relative
+  	list-style none
+  	margin 10px 0 0 0
+  	padding 0 10px 0 5px
+  	/*
+	  &__pointer
+	  	top -53px
+			left -32px
+			height 53px
+			width 6px
+			background-color $remove-button
+  		position absolute*/
+		
+  	&__item
+  		height 53px
+  		line-height 50px
+  		border-bottom 1px solid gray
+  		space-between()
+  		.title
+  			letter-spacing -0.1px
+  		.counter
+  			background-color $add-button
+  			padding 2px 7px
+  			border-radius 20px
+  			margin-left 12px
+  			font-size 14px
+  			font-weight 700
+  			color white
+  		.delete
+  			width 90px
+  			border-color $remove-button
+  			background white
+  			color $remove-button
+
+  	
+	

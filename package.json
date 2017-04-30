@@ -1,7 +1,7 @@
 {
-  "name": "angular-webpack-workflow",
-  "version": "1.1.0",
-  "description": "A workflow for Angular made with Webpack",
+  "name": "testApp",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
@@ -11,14 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/preboot/angularjs-webpack.git"
+    "url": ""
   },
-  "author": "Jesus Rodriguez",
+  "author": "Vlad Elagin",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/preboot/angularjs-webpack/issues"
-  },
-  "homepage": "https://github.com/preboot/angularjs-webpack",
   "dependencies": {
     "angular": "^1.5.0"
   },
@@ -49,6 +45,8 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.1",
     "style-loader": "^0.13.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
     "webpack": "2.2.0",
     "webpack-dev-server": "2.2.0"
   }

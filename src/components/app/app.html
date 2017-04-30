@@ -1,0 +1,58 @@
+<main>
+	<div class="box" ng-controller="PostsController">
+		<span class="box__title">Items</span>
+		<div class="items__new">
+			<input 
+				type="text" 
+				class="items__new__name"
+				placeholder="Type name here..."
+				ng-model="name"
+			>
+			<button 
+				class="items__new__submit"
+				ng-click="addPost()"
+			>Add new</button>
+		</div>
+		<ul class="items__list">
+			<li 
+				class="items__list__item"
+				ng-repeat="(id, post) in posts"
+				ng-class="{ active: id == selectedId }"
+			>
+				<span class="title">
+					{{ post.name }}
+					<span class="counter">{{ post.comments.length }}</span>
+				</span>
+
+				<button 
+					class="delete"
+					ng-click="deletePost(id)"
+				>Delete</button>
+			</li>
+			<!--
+			<li class="items__list__item">
+				<span class="title">
+					First item with custom name
+					<span class="counter">132</span>
+				</span>
+				
+				<button class="delete">Delete</button>
+			</li>
+			<li class="items__list__item active">
+				<span class="title">
+					Second item is active
+					<span class="counter">3</span>
+				</span>
+				
+				<button class="delete">Delete</button>
+			</li>
+			<div class="items__list__pointer">
+				
+			</div>
+			-->
+		</ul>
+	</div>
+	<div class="box">
+		<span class="box__title">Comments #2</span>
+	</div>
+</main>

@@ -1,0 +1,23 @@
+html
+body
+.root
+  width 100%
+  height 100%
+  padding 0
+  margin 0
+  font-family 'Open sans', sans-serif
+
+.root
+  display flex
+  flex-flow row nowrap
+  align-items stretch
+  justify-content flex-start
+  & *
+    box-sizing border-box    
+
+  
+.root > *:not(aside)
+  width calc(100% - 270px)
+  height 100%
+  
+@import './_sidebar' 
