@@ -1,12 +1,12 @@
 import template from './posts.html';
 import controller from './posts.controller';
-//import './posts.styl';
+import './posts.styl';
 
-let PostsComponent = {
+const PostsComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller,
 };
 
 export default PostsComponent;

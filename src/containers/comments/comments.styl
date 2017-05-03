@@ -1,0 +1,66 @@
+@import '../../style/_importable'
+
+comments
+	width 47%
+	.box
+		padding 10px 15px 15px 15px
+
+.comments
+	margin-top 30px
+	
+	&__avatar
+			width 50px
+			height 50px
+			&.red
+				background-color $remove-button
+			&.green
+				background-color $add-button
+			&.blue
+				background-color blue
+	
+	&__comment
+		space-between()
+		align-items flex-start
+		border-bottom 1px solid $input-color
+		padding 10px 0 15px 0
+		
+		
+		&:last-of-type
+			border-bottom none
+		
+
+		&__text
+			font-size 12px
+			width calc(100% - 60px)
+			line-height 22px
+			letter-spacing -0.1px
+			padding-right 5px
+			
+	&__new
+		padding-right 10px
+		space-between()
+		align-items flex-start
+		flex-wrap wrap
+		
+		.comments__avatar
+			position relative
+			&:hover 
+				.comments__avatars
+					display flex
+			
+			&s
+				space-between()
+				box-shadow()
+				display none
+				padding 10px
+				position absolute
+				height 70px
+				width 250px
+				right -10px
+				top -10px
+		
+		&__text
+			resize none
+			width calc(100% - 65px)
+			height 70px
+		

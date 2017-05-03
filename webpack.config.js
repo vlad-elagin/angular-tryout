@@ -7,20 +7,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-/**
- * Env
- * Get npm lifecycle event to identify the environment
- */
+
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
 module.exports = function makeWebpackConfig() {
-  /**
-   * Config
-   * Reference: http://webpack.github.io/docs/configuration.html
-   * This is the object where all configuration gets set
-   */
+
   var config = {};
 
   /**
@@ -56,11 +49,7 @@ module.exports = function makeWebpackConfig() {
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
   };
 
-  /**
-   * Devtool
-   * Reference: http://webpack.github.io/docs/configuration.html#devtool
-   * Type of sourcemap to use per build type
-   */
+
   if (isTest) {
     config.devtool = 'inline-source-map';
   }
@@ -70,13 +59,6 @@ module.exports = function makeWebpackConfig() {
   else {
     config.devtool = 'eval-source-map';
   }
-
-  /**
-   * Loaders
-   * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
-   * List: http://webpack.github.io/docs/list-of-loaders.html
-   * This handles most of the magic responsible for converting modules
-   */
 
   // Initialize module
   config.module = {
@@ -138,6 +120,17 @@ module.exports = function makeWebpackConfig() {
     }]
   };
 
+  if (isProd) {
+    config.module.rules.push(
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+      }
+    )
+  }
+
   // ISTANBUL LOADER
   // https://github.com/deepsweet/istanbul-instrumenter-loader
   // Instrument JS files with istanbul-lib-instrument for subsequent code coverage reporting
@@ -150,10 +143,11 @@ module.exports = function makeWebpackConfig() {
         /node_modules/,
         /\.spec\.js$/
       ],
-      loader: 'istanbul-instrumenter-loader',
+      loader: 'eslint',
+      /*
       query: {
         esModules: true
-      }
+      }*/
     })
   }
 
@@ -203,11 +197,8 @@ module.exports = function makeWebpackConfig() {
     config.plugins.push(
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
       // Only emit files when there are no errors
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
 
-      // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-      // Dedupe modules in the output
-      new webpack.optimize.DedupePlugin(),
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode

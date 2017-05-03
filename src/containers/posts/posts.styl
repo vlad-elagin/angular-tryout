@@ -1,0 +1,126 @@
+@import '../../style/_importable'
+
+posts
+	width 51%
+	.box
+		padding 10px 10px 5px 25px
+
+.items
+	
+	&__new
+		padding 0 5px
+		space-between()
+		margin-top 16px
+		position relative
+		
+		&__name
+			width calc(100% - 140px)
+			height 37px
+			padding 0 35px 0 10px
+			letter-spacing 0.2px
+			transition border-color .2s ease
+				
+			&:focus
+				outline none
+				border-color $add-button
+		
+		&__submit
+			width 130px
+			background-color $add-button
+			
+		&__clear
+			position absolute
+			right 150px
+			width 30px
+			height 30px
+			overflow hidden
+			cursor pointer
+			&::before 
+			&::after
+				content ''
+				position absolute
+				height 2px
+				width 100%
+				top 50%
+				left 0
+				margin-top -1px
+				background $input-color
+				
+			&::before
+				transform rotate(45deg)
+			
+			&::after
+				transform rotate(-45deg)
+				
+			&:hover
+				&::before
+				&::after
+					background $remove-button
+				
+			
+	&__list
+		position relative
+		list-style none
+		margin 10px 0 0 0
+		padding 0 10px 0 5px
+
+		&__item
+			position relative
+			height 53px
+			space-between()
+			line-height 50px
+			cursor pointer
+			
+			&:not(:last-of-type)
+				border-bottom 1px solid $input-color
+			
+			&:before
+				opacity 0
+				content ''
+				top 0
+				left -34px
+				height 53px
+				width 6px
+				background-color $remove-button
+				transition opacity .5s ease
+				position absolute
+				
+			&.active:before
+				opacity 1
+			
+			.title
+				letter-spacing -0.1px
+				padding-right 35px
+				max-width calc(100% - 100px)
+				white-space nowrap
+				overflow hidden
+				position relative
+				&:after
+					width 45px
+					position absolute
+					z-index 0
+					right -1px
+					top 2%
+					height 95%
+					content ''
+					background linear-gradient(to right, transparent 0%, white 40%)
+			.counter
+				position absolute
+				right 0
+				top 14px
+				height 23px
+				line-height 23px
+				background-color $add-button
+				padding 0 7px
+				border-radius 20px
+				font-size 14px
+				font-weight 700
+				color white
+				z-index 1
+				
+			.delete
+				width 90px
+				border-color $remove-button
+				background white
+				color $remove-button
+				

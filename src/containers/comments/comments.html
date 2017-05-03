@@ -1,10 +1,11 @@
 <div class="box">
-	<span class="box__title">Comments #{{ selectedPost }}</span>
-
-	<div class="comments">
+	<span class="box__title"  ng-if="$ctrl.selectedPost">Comments #{{ $ctrl.selectedPost }}</span>
+	<span class="box__title"  ng-if="!$ctrl.selectedPost">No post selected.</span>
+	
+	<div ng-if="$ctrl.selectedPost" class="comments">
 		<div 
 			class="comments__comment"
-			ng-repeat="comment in posts[selectedPost].comments"
+			ng-repeat="comment in $ctrl.comments track by $index"
 		>
 			<div 
 				class="comments__avatar"
@@ -21,34 +22,35 @@
 
 	<div 
 		class="comments__new"
+		ng-if="$ctrl.selectedPost"
 	>
 		<div 
 			class="comments__avatar red"
 			ng-class="{
-				'red': author == 'mr. red',
-				'blue': author == 'mr. blue',
-				'green': author == 'mr. green' 
+				'red': $ctrl.author == 'mr. red',
+				'blue': $ctrl.author == 'mr. blue',
+				'green': $ctrl.author == 'mr. green' 
 			}"
 		>
 			<div class="comments__avatars">
 				<div 
 					class="comments__avatar red"
-					ng-click="author = 'mr. red'"
+					ng-click="$ctrl.pickAuthor('mr. red')"
 				></div>
 				<div 
 					class="comments__avatar blue"
-					ng-click="author = 'mr. blue'"
+					ng-click="$ctrl.pickAuthor('mr. blue')"
 				></div>
 				<div 
 					class="comments__avatar green"
-					ng-click="author = 'mr. green'"
+					ng-click="$ctrl.pickAuthor('mr. green')"
 				></div>
 				<div 
-					class="comments__avatar red"
+					class="comments__avatar"
 					ng-class="{
-						'red': author == 'mr. red',
-						'blue': author == 'mr. blue',
-						'green': author == 'mr. green' 
+						'red': $ctrl.author == 'mr. red',
+						'blue': $ctrl.author == 'mr. blue',
+						'green': $ctrl.author == 'mr. green' 
 					}"
 				></div>
 			</div>
@@ -56,10 +58,12 @@
 		</div>
 		<textarea 
 			class="comments__new__text"
-			ng-model="newComment"
-			id="comment_input"
-			ng-focus="addCommentListener"
-			ng-blur="removeCommentListener"
+			ng-model="$ctrl.comment"
+			ng-change="$ctrl.onChange()"
+			ng-keypress="$ctrl.submitComment($event)"
+			ng-focus="$ctrl.focus = true"
+			ng-blur="$ctrl.focus = false"
 		></textarea>
+		
 	</div>
 </div>

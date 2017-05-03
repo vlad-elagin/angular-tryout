@@ -7,6 +7,7 @@
 			placeholder="Type name here..."
 			ng-model="$ctrl.newName"
 			ng-change="$ctrl.newNameChanged($ctrl.newName)"
+			ng-keypress="$ctrl.submitName($event)"
 		>
 		<div 
 			class="items__new__clear"
@@ -14,7 +15,7 @@
 		></div>
 		<button 
 			class="items__new__submit"
-			ng-click="$ctrl.submitPost()"
+			ng-click="$ctrl.onSubmit()"
 		>Add new</button>
 	</div>
 	<ul class="items__list">
@@ -22,7 +23,7 @@
 			class="items__list__item"
 			ng-repeat="(id, post) in $ctrl.posts"
 			ng-class="{ active: id == $ctrl.selectedPost }"
-			ng-click="$ctrl.selectPost(id)"
+			ng-click="$ctrl.onSelect(id)"
 		>
 			<span class="title">
 				{{ post.name }}
@@ -31,7 +32,7 @@
 
 			<button 
 				class="delete"
-				ng-click="$ctrl.removePost(id)"
+				ng-click="$ctrl.onRemove(id)"
 			>Delete</button>
 		</li>
 	</ul>

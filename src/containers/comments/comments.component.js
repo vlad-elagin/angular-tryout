@@ -1,12 +1,12 @@
 import template from './comments.html';
 import controller from './comments.controller';
-//import './comments.styl';
+import './comments.styl';
 
-let CommentsComponent = {
+const CommentsComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller
+  controller,
 };
 
 export default CommentsComponent;
