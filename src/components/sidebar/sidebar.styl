@@ -1,7 +1,7 @@
 $aside-bg = #2B2F3E
 $aside-heading-color = #6B6D7C
   
-aside
+sidebar
   width 270px
   background-color $aside-bg
   
@@ -26,3 +26,8 @@ aside
       cursor pointer
       &.active
         background linear-gradient(to bottom, #FF496F, #FF404B)
+        
+  @media screen and (max-width: 1023px)
+    width 100%
+    height auto
+    padding-bottom 25px

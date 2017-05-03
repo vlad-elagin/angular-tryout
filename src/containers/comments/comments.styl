@@ -4,6 +4,8 @@ comments
 	width 47%
 	.box
 		padding 10px 15px 15px 15px
+	@media screen and (max-width: 1023px)
+		width 100%
 
 .comments
 	margin-top 30px
@@ -63,4 +65,7 @@ comments
 			resize none
 			width calc(100% - 65px)
 			height 70px
-		
+			transition border-color .2s ease
+			&:focus
+				outline none
+				border-color $add-button

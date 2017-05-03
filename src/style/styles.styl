@@ -1,3 +1,5 @@
+@import '_importable';
+
 html
 body
 .root
@@ -7,18 +9,34 @@ body
   margin 0
   font-family 'Open sans', sans-serif
 
+body
+  background-color $main-bg
+
 .root
   display flex
   flex-flow row nowrap
   align-items stretch
   justify-content flex-start
   & *
-    box-sizing border-box    
+    box-sizing border-box 
+    
+  @media screen and (max-width: 1023px)
+    flex-flow column nowrap
+    
+  /*
+  @media screen and (min-width: 1024px)
+    max-width 1024px
+    margin-left calc(50% - 512px)
+  */
+    
 
-  
-.root > *:not(aside)
+app
   width calc(100% - 270px)
   height 100%
   
-@import './_sidebar'
+  @media screen and (max-width: 1023px)
+    width 100%
+    height auto
+
+
 @import './_general'

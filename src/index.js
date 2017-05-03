@@ -11,6 +11,7 @@ import CommentsComponent from './containers/comments/comments.component';
 // misc
 import RootReducer from './reducers';
 import AppComponent from './containers/app/app.component';
+import SidebarComponent from './components/sidebar/sidebar.component';
 
 import './style/styles.styl';
 
@@ -20,6 +21,7 @@ angular.module(MODULE_NAME, [ngRedux])
   .component('app', AppComponent)
   .component('posts', PostsComponent)
   .component('comments', CommentsComponent)
+  .component('sidebar', SidebarComponent)
   .config(['$ngReduxProvider', ($ngReduxProvider) => {
     // read saved state and use as initial
     const initialState = JSON.parse(localStorage.getItem('testApp')) || {};

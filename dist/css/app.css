@@ -4,6 +4,12 @@ posts {
 posts .box {
   padding: 10px 10px 5px 25px;
 }
+@media screen and (max-width: 1023px) {
+  posts {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+}
 .items__new {
   padding: 0 5px;
   display: -ms-flexbox;
@@ -142,6 +148,11 @@ comments {
 comments .box {
   padding: 10px 15px 15px 15px;
 }
+@media screen and (max-width: 1023px) {
+  comments {
+    width: 100%;
+  }
+}
 .comments {
   margin-top: 30px;
 }
@@ -227,6 +238,46 @@ comments .box {
   resize: none;
   width: calc(100% - 65px);
   height: 70px;
+  transition: border-color 0.2s ease;
+}
+.comments__new__text:focus {
+  outline: none;
+  border-color: #3cc;
+}
+sidebar {
+  width: 270px;
+  background-color: #2b2f3e;
+}
+sidebar h1 {
+  font-size: 36px;
+  font-weight: 300;
+  margin: 14px 0 0 27px;
+  letter-spacing: 1px;
+  color: #6b6d7c;
+}
+sidebar ul {
+  padding: 0;
+  margin: 65px 0 0 0;
+  width: 100%;
+}
+sidebar ul li {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  color: #fff;
+  font-size: 18px;
+  padding-left: 28px;
+  cursor: pointer;
+}
+sidebar ul li.active {
+  background: linear-gradient(to bottom, #ff496f, #ff404b);
+}
+@media screen and (max-width: 1023px) {
+  sidebar {
+    width: 100%;
+    height: auto;
+    padding-bottom: 25px;
+  }
 }
 html,
 body,
@@ -237,6 +288,9 @@ body,
   margin: 0;
   font-family: 'Open sans', sans-serif;
 }
+body {
+  background-color: #fafafa;
+}
 .root {
   display: -ms-flexbox;
   display: flex;
@@ -246,41 +300,30 @@ body,
       align-items: stretch;
   -ms-flex-pack: start;
       justify-content: flex-start;
+/*
+  @media screen and (min-width: 1024px)
+    max-width 1024px
+    margin-left calc(50% - 512px)
+  */
 }
 .root * {
   box-sizing: border-box;
 }
-.root > *:not(aside) {
+@media screen and (max-width: 1023px) {
+  .root {
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+  }
+}
+app {
   width: calc(100% - 270px);
   height: 100%;
 }
-aside {
-  width: 270px;
-  background-color: #2b2f3e;
-}
-aside h1 {
-  font-size: 36px;
-  font-weight: 300;
-  margin: 14px 0 0 27px;
-  letter-spacing: 1px;
-  color: #6b6d7c;
-}
-aside ul {
-  padding: 0;
-  margin: 65px 0 0 0;
-  width: 100%;
-}
-aside ul li {
-  width: 100%;
-  height: 55px;
-  line-height: 55px;
-  color: #fff;
-  font-size: 18px;
-  padding-left: 28px;
-  cursor: pointer;
-}
-aside ul li.active {
-  background: linear-gradient(to bottom, #ff496f, #ff404b);
+@media screen and (max-width: 1023px) {
+  app {
+    width: 100%;
+    height: auto;
+  }
 }
 button {
   height: 35px;
@@ -291,6 +334,10 @@ button {
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
+}
+button:focus,
+button:active {
+  outline: none;
 }
 input,
 textarea {
@@ -321,7 +368,6 @@ main {
   -ms-flex-align: start;
       align-items: flex-start;
   padding: 30px;
-  background-color: #fafafa;
 }
 main::-webkit-scrollbar {
   background-color: #ebebeb;
@@ -329,6 +375,12 @@ main::-webkit-scrollbar {
 }
 main::-webkit-scrollbar-thumb {
   background-color: #c0c0c0;
+}
+@media screen and (max-width: 1023px) {
+  main {
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+  }
 }
 .box {
   box-shadow: 0 0 4px rgba(0,0,0,0.5);
