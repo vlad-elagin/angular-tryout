@@ -1,0 +1,65 @@
+<div class="box">
+	<span class="box__title">Comments #{{ selectedPost }}</span>
+
+	<div class="comments">
+		<div 
+			class="comments__comment"
+			ng-repeat="comment in posts[selectedPost].comments"
+		>
+			<div 
+				class="comments__avatar"
+				ng-class="{
+					'red': comment.author == 'mr. red',
+					'blue': comment.author == 'mr. blue',
+					'green': comment.author == 'mr. green' 
+				}"
+			></div>
+			<div class="comments__comment__text">{{ comment.text }}</div>
+		</div>
+
+	</div>
+
+	<div 
+		class="comments__new"
+	>
+		<div 
+			class="comments__avatar red"
+			ng-class="{
+				'red': author == 'mr. red',
+				'blue': author == 'mr. blue',
+				'green': author == 'mr. green' 
+			}"
+		>
+			<div class="comments__avatars">
+				<div 
+					class="comments__avatar red"
+					ng-click="author = 'mr. red'"
+				></div>
+				<div 
+					class="comments__avatar blue"
+					ng-click="author = 'mr. blue'"
+				></div>
+				<div 
+					class="comments__avatar green"
+					ng-click="author = 'mr. green'"
+				></div>
+				<div 
+					class="comments__avatar red"
+					ng-class="{
+						'red': author == 'mr. red',
+						'blue': author == 'mr. blue',
+						'green': author == 'mr. green' 
+					}"
+				></div>
+			</div>
+
+		</div>
+		<textarea 
+			class="comments__new__text"
+			ng-model="newComment"
+			id="comment_input"
+			ng-focus="addCommentListener"
+			ng-blur="removeCommentListener"
+		></textarea>
+	</div>
+</div>

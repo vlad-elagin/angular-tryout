@@ -1,0 +1,38 @@
+<div class="box">
+	<span class="box__title">Items</span>
+	<div class="items__new">
+		<input 
+			type="text" 
+			class="items__new__name"
+			placeholder="Type name here..."
+			ng-model="$ctrl.newName"
+			ng-change="$ctrl.newNameChanged($ctrl.newName)"
+		>
+		<div 
+			class="items__new__clear"
+			ng-click="$ctrl.newNameChanged('')"
+		></div>
+		<button 
+			class="items__new__submit"
+			ng-click="$ctrl.submitPost()"
+		>Add new</button>
+	</div>
+	<ul class="items__list">
+		<li 
+			class="items__list__item"
+			ng-repeat="(id, post) in $ctrl.posts"
+			ng-class="{ active: id == $ctrl.selectedPost }"
+			ng-click="$ctrl.selectPost(id)"
+		>
+			<span class="title">
+				{{ post.name }}
+				<span class="counter">{{ post.comments.length }}</span>
+			</span>
+
+			<button 
+				class="delete"
+				ng-click="$ctrl.removePost(id)"
+			>Delete</button>
+		</li>
+	</ul>
+</div>

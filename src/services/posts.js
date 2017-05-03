@@ -5,11 +5,12 @@ class Posts {
 	}
 
 	addPost(name) {
+
 		let posts = JSON.parse(localStorage.getItem('testApp')) || {};
 		const lastItemId = Object.keys(posts).length > 0 ? 
-			Object.keys(posts).length : 
+			Math.max( ...Object.keys(posts) ) : 
 			0;
-		posts[lastItemId] = { 
+		posts[lastItemId + 1] = { 
 			name: name,
 			comments: [] 
 		};
@@ -22,12 +23,19 @@ class Posts {
 		if (!posts && posts.length == 0 || !posts[id]) return;
 		delete posts[id];
 		localStorage.setItem('testApp', JSON.stringify(posts));
-		console.log(posts);
 		return posts;
 	}
 
-	addComment(author, text) {
+	addComment(to, by, text) {
 		console.log('adding comment');
+		let posts = JSON.parse(localStorage.getItem('testApp'));
+		if (!posts || !posts[to]) return;
+		posts[to].comments.push({
+			author: by,
+			text: text
+		});
+		localStorage.setItem('testApp', JSON.stringify(posts));
+		return posts;
 	}
 
 }
