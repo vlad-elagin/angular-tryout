@@ -1,7 +1,7 @@
 import PostsActions from '../../actions/posts.actions';
 import AppActions from '../../actions/app.actions';
 
-export default class PostsController {
+class PostsController {
 
   constructor($ngRedux) {
     this.unsubscribe =
@@ -15,7 +15,7 @@ export default class PostsController {
     this.unsubscribe();
   }
 
-  static mapStateToThis(state) {
+  mapStateToThis(state) {
     return {
       posts: state.posts,
       newName: state.app.newName,
@@ -47,3 +47,8 @@ export default class PostsController {
   }
 
 }
+
+PostsController.$inject = ['$ngRedux'];
+
+export default PostsController;
+

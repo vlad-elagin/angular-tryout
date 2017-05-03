@@ -1,7 +1,7 @@
 import PostsActions from '../../actions/posts.actions';
 import AppActions from '../../actions/app.actions';
 
-export default class CommentsController {
+class CommentsController {
 
   constructor($ngRedux) {
     this.comment = '';
@@ -17,7 +17,7 @@ export default class CommentsController {
     this.unsubscribe();
   }
 
-  static mapStateToThis(state) {
+  mapStateToThis(state) {
     return {
       comment: state.app.newComment,
       comments: state.app.selectedPost ? state.posts[state.app.selectedPost].comments : {},
@@ -43,3 +43,7 @@ export default class CommentsController {
     this.newCommentChanged(this.comment);
   }
 }
+
+CommentsController.$inject = ['$ngRedux'];
+
+export default CommentsController;

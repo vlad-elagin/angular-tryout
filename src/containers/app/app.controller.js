@@ -1,4 +1,4 @@
-export default class AppController {
+class AppController {
 
   constructor($ngRedux) {
     this.unsubscribe =
@@ -12,9 +12,13 @@ export default class AppController {
     this.unsubscribe();
   }
 
-  static mapStateToThis(state) {
+  mapStateToThis(state) {
     return {
       selectedPost: state.app.selectedPost,
     };
   }
 }
+
+AppController.$inject = ['$ngRedux'];
+
+export default AppController;

@@ -20,19 +20,17 @@ angular.module(MODULE_NAME, [ngRedux])
   .component('app', AppComponent)
   .component('posts', PostsComponent)
   .component('comments', CommentsComponent)
-  .config(
-    ($ngReduxProvider) => {
-      // read saved state and use as initial
-      const initialState = JSON.parse(localStorage.getItem('testApp')) || {};
-      $ngReduxProvider.createStoreWith(RootReducer, null, null, initialState);
-    },
-  )
-  .run(($ngRedux) => {
+  .config(['$ngReduxProvider', ($ngReduxProvider) => {
+    // read saved state and use as initial
+    const initialState = JSON.parse(localStorage.getItem('testApp')) || {};
+    $ngReduxProvider.createStoreWith(RootReducer, null, null, initialState);
+  }])
+  .run(['$ngRedux', ($ngRedux) => {
     // write any state change into localStorage
     $ngRedux.subscribe(() => {
       localStorage.setItem('testApp', JSON.stringify($ngRedux.getState()));
     });
-  });
+  }]);
 
 
 export default MODULE_NAME;

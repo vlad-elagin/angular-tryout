@@ -19,7 +19,6 @@ const initialState = {};
 
 export default function PostsReducer(state = initialState, action) {
   switch (action.type) {
-
     case 'CREATE_POST': {
       const newItemId = Object.keys(state).length > 0 ?
         Math.max(...Object.keys(state)) + 1 :
